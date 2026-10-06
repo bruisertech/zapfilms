@@ -169,6 +169,62 @@
 </head>
 <body class="bg-black text-zinc-300 antialiased selection:bg-zinc-800 selection:text-white min-h-screen">
 
+    <!-- CINEMATIC 18+ AGE GATE & PRELOADER -->
+    <div id="age-gate-preloader" class="fixed inset-0 z-[100] bg-black flex items-center justify-center p-4 transition-all duration-700 ease-out">
+        <!-- Film Grain / Radial Backdrop Glow -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(var(--accent-rgb),0.12)_0%,_transparent_75%)] pointer-events-none"></div>
+
+        <!-- Corner Crop Lines (Viewfinder Frame Aesthetic) -->
+        <div class="absolute inset-6 pointer-events-none hidden sm:flex flex-col justify-between">
+            <div class="flex justify-between text-accent font-mono-tech text-2xl font-bold leading-none select-none opacity-60">
+                <span>⌜</span>
+                <span>⌝</span>
+            </div>
+            <div class="flex justify-between text-accent font-mono-tech text-2xl font-bold leading-none select-none opacity-60">
+                <span>⌞</span>
+                <span>⌟</span>
+            </div>
+        </div>
+
+        <div class="relative max-w-lg w-full bg-zinc-950/90 border border-white/15 rounded-2xl p-6 sm:p-8 text-center backdrop-blur-2xl shadow-2xl space-y-6">
+            <!-- Studio Logo -->
+            <div class="flex justify-center">
+                <div class="zap-logo-mask-lg" title="Zap Films"></div>
+            </div>
+
+            <!-- Film Rating Badge -->
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded bg-red-500/10 border border-red-500/30 text-red-400 font-mono-tech text-xs tracking-widest uppercase">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                <span>[ R-18+ // ADULT CINEMATOGRAPHY ]</span>
+            </div>
+
+            <!-- Title & Notice -->
+            <div class="space-y-3">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-mono-tech tracking-tight">
+                    CONTROL DE ACCESO AL SET
+                </h2>
+                <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                    Este sitio web contiene producciones cinematográficas para adultos, material explícito y oportunidades de casting profesional reservadas exclusivamente para personas mayores de edad (+18).
+                </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-black/60 border border-white/10 text-xs text-zinc-300 font-mono-tech">
+                ¿Confirmas que tienes 18 años o más y consientes visualizar este contenido?
+            </div>
+
+            <!-- Actions Group -->
+            <div class="space-y-3 pt-2">
+                <button onclick="acceptAgeGate()" class="w-full btn-accent-glow bg-accent text-black font-extrabold text-xs uppercase tracking-wider py-4 rounded-xl flex items-center justify-center space-x-2 transition-all">
+                    <span>[ SÍ, SOY MAYOR DE 18 — ENTRAR AL SET ]</span>
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                </button>
+                <button onclick="rejectAgeGate()" class="w-full bg-white/5 hover:bg-red-500/10 border border-white/10 hover:border-red-500/40 text-zinc-400 hover:text-red-400 font-semibold text-xs uppercase tracking-wider py-3.5 rounded-xl transition-all">
+                    [ NO, SOY MENOR DE EDAD ]
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- FILM SLATE TOP HEADER BAR -->
     <div class="bg-brand-dark border-b border-zinc-900 py-1.5 px-4 text-[11px] font-mono-tech text-zinc-500 flex justify-between items-center tracking-wider overflow-x-auto whitespace-nowrap">
         <div class="flex items-center space-x-6">
@@ -1040,6 +1096,28 @@
 
     <!-- VANILLA JAVASCRIPT LOGIC -->
     <script>
+        // Check Age Gate Initial Session State
+        const ageGate = document.getElementById('age-gate-preloader');
+        if (sessionStorage.getItem('zap_age_verified') === 'true') {
+            if (ageGate) ageGate.classList.add('hidden');
+        } else {
+            if (ageGate) ageGate.classList.remove('hidden');
+        }
+
+        function acceptAgeGate() {
+            sessionStorage.setItem('zap_age_verified', 'true');
+            if (ageGate) {
+                ageGate.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    ageGate.classList.add('hidden');
+                }, 700);
+            }
+        }
+
+        function rejectAgeGate() {
+            window.location.href = "https://www.youtube.com/watch?v=HlgKJ6FrhDY";
+        }
+
         // Initialize Lucide Icons
         lucide.createIcons();
 
