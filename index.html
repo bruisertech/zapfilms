@@ -84,11 +84,12 @@
             --tw-ring-color: var(--accent) !important;
         }
 
-        /* Dynamic Logo Mask Implementation for blanco.png */
+        /* Dynamic Logo Mask Implementation for blanco.png (Enlarged x2) */
         .zap-logo-mask {
             display: inline-block;
-            width: 220px;
-            height: 58px;
+            width: 440px;
+            height: 116px;
+            max-width: 65vw;
             background-color: var(--accent);
             -webkit-mask-image: url('./blanco.png');
             mask-image: url('./blanco.png');
@@ -98,14 +99,15 @@
             mask-position: center;
             -webkit-mask-size: contain;
             mask-size: contain;
-            filter: drop-shadow(0 3px 12px rgba(var(--accent-rgb), 0.4));
+            filter: drop-shadow(0 4px 20px rgba(var(--accent-rgb), 0.5));
             transition: background-color 0.3s ease, filter 0.3s ease;
         }
 
         .zap-logo-mask-lg {
             display: inline-block;
-            width: 240px;
-            height: 64px;
+            width: 480px;
+            height: 128px;
+            max-width: 85vw;
             background-color: var(--accent);
             -webkit-mask-image: url('./blanco.png');
             mask-image: url('./blanco.png');
@@ -115,7 +117,7 @@
             mask-position: center;
             -webkit-mask-size: contain;
             mask-size: contain;
-            filter: drop-shadow(0 4px 15px rgba(var(--accent-rgb), 0.45));
+            filter: drop-shadow(0 6px 25px rgba(var(--accent-rgb), 0.55));
             transition: background-color 0.3s ease, filter 0.3s ease;
         }
 
@@ -823,7 +825,7 @@
                         <ul class="space-y-3 text-sm text-zinc-300 mb-8 border-t border-zinc-800 pt-6">
                             <li class="flex items-center space-x-3">
                                 <i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i>
-                                <span>Despliegue en CDN global de alta velocidad (Amazon AWS).</span>
+                                <span>Despliegue en CDN global de alta velocidad (GitHub Pages).</span>
                             </li>
                             <li class="flex items-center space-x-3">
                                 <i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i>
