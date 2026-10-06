@@ -212,60 +212,138 @@
         </div>
     </nav>
 
-    <!-- CINEMATIC HERO SECTION -->
-    <section class="relative min-h-[85vh] flex items-center justify-center pt-16 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-black">
+    <!-- CINEMATIC HERO SECTION (DIRECTOR'S VIEWFINDER) -->
+    <section class="relative py-12 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
         <!-- Subtle Cinematic Backdrop Glow -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(var(--accent-rgb),0.06)_0%,_transparent_70%)] pointer-events-none"></div>
-        <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_60%,#000000_100%)] pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(var(--accent-rgb),0.08)_0%,_transparent_70%)] pointer-events-none"></div>
 
-        <div class="relative max-w-5xl mx-auto text-center z-10">
-            <!-- Eyebrow Badge -->
-            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-white/10 text-zinc-300 text-xs font-mono-tech tracking-widest uppercase mb-8">
-                <span class="w-2 h-2 rounded-full bg-accent"></span>
-                <span>Estudio de Producción & Management Independiente — Cali / Internacional</span>
-            </div>
+        <div class="max-w-7xl mx-auto">
+            <!-- DIRECTOR'S VIEWFINDER FRAME -->
+            <div class="border border-white/10 bg-zinc-950/80 rounded-2xl relative overflow-hidden backdrop-blur-xl shadow-2xl">
 
-            <!-- Brutal & High-Conversion Headline -->
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.08] mb-8">
-                Deja de regalar tus videos por un pago único. <br class="hidden sm:inline"/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-400">Conviértete en dueña de tu catálogo y</span>
-                <span class="text-accent underline decoration-accent/40 underline-offset-8">factura de por vida.</span>
-            </h1>
+                <!-- CAMERA HUD TOP BAR -->
+                <div class="bg-black/90 border-b border-white/10 px-4 py-3 font-mono-tech text-xs text-zinc-400 flex flex-wrap justify-between items-center gap-3 tracking-wider">
+                    <!-- HUD Left -->
+                    <div class="flex items-center space-x-4">
+                        <span class="flex items-center text-red-500 font-bold">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping mr-2"></span> ● REC
+                        </span>
+                        <span class="text-zinc-300 font-semibold">RAW 4K DCI</span>
+                        <span class="hidden sm:inline text-zinc-500">|</span>
+                        <span class="hidden sm:inline">FPS: <strong class="text-zinc-200">60.00</strong></span>
+                        <span class="hidden sm:inline text-zinc-500">|</span>
+                        <span class="hidden sm:inline">SHUTTER: <strong class="text-zinc-200">180°</strong></span>
+                    </div>
 
-            <!-- Direct Subheadline -->
-            <p class="max-w-3xl mx-auto text-base sm:text-lg text-zinc-400 font-normal leading-relaxed mb-10">
-                Las productoras de siempre te pagan $500 USD una sola vez y se quedan con tus derechos para siempre. En <strong class="text-zinc-200 font-semibold">Zap Films</strong> producimos tu contenido con calidad de cine 4K, dirigimos tu imagen y optimizamos tus plataformas. Tu cuenta es tuya. Tu contenido es tuyo. Tus regalías se liquidan semanalmente con acceso total a tu panel.
-            </p>
+                    <!-- HUD Center Timecode -->
+                    <div class="text-accent font-mono-tech font-extrabold tracking-widest text-sm bg-zinc-900/90 border border-accent/20 px-3 py-1 rounded">
+                        TC <span id="hero-timecode-display">01:24:59:12</span>
+                    </div>
 
-            <!-- CTA Group -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16">
-                <button onclick="openCastingModal()" class="w-full sm:w-auto btn-accent-glow bg-accent text-black font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl flex items-center justify-center space-x-3 transition-all">
-                    <span>Postularme a Zap Films</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </button>
-                <a href="#comparativa" class="w-full sm:w-auto bg-brand-surface hover:bg-zinc-800 text-zinc-200 font-semibold text-sm uppercase tracking-wider px-8 py-4 rounded-xl border border-white/10 flex items-center justify-center space-x-2 transition-all">
-                    <span>Ver Comparativa de Ingresos</span>
-                    <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-400"></i>
-                </a>
-            </div>
-
-            <!-- Studio Proof Strip -->
-            <div class="pt-8 border-t border-zinc-900 grid grid-cols-2 md:grid-cols-4 gap-4 text-center font-mono-tech text-xs text-zinc-400">
-                <div class="p-3 rounded-lg bg-zinc-950/50 border border-white/[0.04]">
-                    <div class="text-accent font-bold text-sm mb-1">100% DERECHOS</div>
-                    <div>Propiedad Total de la Creadora</div>
+                    <!-- HUD Right -->
+                    <div class="flex items-center space-x-4 text-zinc-400">
+                        <span>ISO <strong class="text-zinc-200">800</strong></span>
+                        <span class="text-zinc-500">|</span>
+                        <span><strong class="text-zinc-200">f/1.4</strong></span>
+                        <span class="hidden md:inline text-zinc-500">|</span>
+                        <span class="hidden md:inline">WB: <strong class="text-zinc-200">5600K</strong></span>
+                        <span class="hidden sm:inline text-zinc-500">|</span>
+                        <span class="hidden sm:inline text-emerald-400">BATT: 98% [▮▮▮▮]</span>
+                    </div>
                 </div>
-                <div class="p-3 rounded-lg bg-zinc-950/50 border border-white/[0.04]">
-                    <div class="text-accent font-bold text-sm mb-1">CERO SECUESTRO</div>
-                    <div>Cero Contratos Abusivos</div>
-                </div>
-                <div class="p-3 rounded-lg bg-zinc-950/50 border border-white/[0.04]">
-                    <div class="text-accent font-bold text-sm mb-1">PAGOS SEMANALES</div>
-                    <div>Transparencia USD / COP</div>
-                </div>
-                <div class="p-3 rounded-lg bg-zinc-950/50 border border-white/[0.04]">
-                    <div class="text-accent font-bold text-sm mb-1">CINE 4K HDR</div>
-                    <div>Equipos Cinema Line Pro</div>
+
+                <!-- VIEWFINDER CONTENT BODY (2-COLUMN ASYMMETRIC) -->
+                <div class="p-6 sm:p-10 lg:p-12 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+
+                    <!-- LEFT COLUMN: Agency Proposition & Casting Call -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <!-- Casting Active Badge -->
+                        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-md bg-black/80 border border-accent/40 text-accent font-mono-tech text-xs tracking-widest uppercase shadow-[0_0_15px_rgba(var(--accent-rgb),0.15)]">
+                            <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                            <span>[● CASTING PRIVADO ACTIVO // CALI & INTERNACIONAL]</span>
+                        </div>
+
+                        <!-- Editorial High-Contrast Headline -->
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
+                            Tu imagen. Tu catálogo. <br/>
+                            <span class="text-accent">Tus regalías de por vida.</span>
+                        </h1>
+
+                        <!-- Direct Agency Body Copy -->
+                        <p class="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal">
+                            Estudios como Sexmex o InkaSex te compran un video por $500 USD una sola vez y se lucran con tu cuerpo durante años. En <strong class="text-white font-semibold">Zap Films</strong> cambiamos el juego: ponemos equipos de cine 4K, dirección de escena y management de plataformas, pero el contenido y las cuentas son 100% tuyos. Tú construyes un catálogo propio y recibes ingresos semanales recurrentes.
+                        </p>
+
+                        <!-- Action Group -->
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                            <button onclick="openCastingModal()" class="btn-accent-glow bg-accent text-black font-extrabold text-xs uppercase tracking-wider px-8 py-4 rounded-xl flex items-center justify-center space-x-3 transition-all">
+                                <span>[ Postularme al Casting ]</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                            <a href="https://wa.me/573053862774?text=Hola%20Zap%20Films,%20quisiera%20hablar%20con%20un%20director%20sobre%20el%20modelo%20de%20management" target="_blank" class="bg-zinc-900 hover:bg-zinc-800 text-zinc-200 font-semibold text-xs uppercase tracking-wider px-7 py-4 rounded-xl border border-white/10 flex items-center justify-center space-x-2 transition-all">
+                                <span>[ Hablar con un Director ]</span>
+                                <i data-lucide="message-square" class="w-4 h-4 text-accent"></i>
+                            </a>
+                        </div>
+
+                        <!-- Editorial Trust Line (Horizontal Guarantees) -->
+                        <div class="pt-4 border-t border-white/10 flex flex-wrap items-center gap-y-2 gap-x-4 font-mono-tech text-[11px] text-zinc-400">
+                            <span class="flex items-center text-zinc-300">
+                                <span class="text-accent font-bold mr-1.5">✓</span> Liquidaciones Semanales en USD/COP
+                            </span>
+                            <span class="text-zinc-600 hidden sm:inline">•</span>
+                            <span class="flex items-center text-zinc-300">
+                                <span class="text-accent font-bold mr-1.5">✓</span> Contratos de Confidencialidad (NDA)
+                            </span>
+                            <span class="text-zinc-600 hidden sm:inline">•</span>
+                            <span class="flex items-center text-zinc-300">
+                                <span class="text-accent font-bold mr-1.5">✓</span> Sin Exclusividad Abusiva
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Director's Screen / Scene Slate Monitor -->
+                    <div class="lg:col-span-5">
+                        <div class="relative rounded-xl overflow-hidden border border-white/15 bg-black shadow-2xl group">
+                            <!-- 16:9 Aspect Ratio Container -->
+                            <div class="relative aspect-[16/9] w-full overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80" alt="Zap Studio Scene Monitor" class="w-full h-full object-cover object-center filter saturate-[1.1] contrast-[1.05]">
+
+                                <!-- OVERLAID CAMERA FOCUS CROSSHAIRS & CORNER CROPS -->
+                                <div class="absolute inset-0 pointer-events-none p-4 flex flex-col justify-between">
+                                    <!-- Top Corners -->
+                                    <div class="flex justify-between text-accent font-mono-tech text-lg font-bold leading-none select-none">
+                                        <span>⌜</span>
+                                        <span>⌝</span>
+                                    </div>
+                                    <!-- Center Crosshair -->
+                                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                        <span class="text-accent/80 font-mono-tech text-xl font-light">+</span>
+                                    </div>
+                                    <!-- Bottom Corners -->
+                                    <div class="flex justify-between text-accent font-mono-tech text-lg font-bold leading-none select-none">
+                                        <span>⌞</span>
+                                        <span>⌟</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BOTTOM SLATE / CLAPPERBOARD OVERLAY -->
+                            <div class="bg-black/95 border-t border-white/15 p-3.5 font-mono-tech text-[11px] text-zinc-300 flex justify-between items-center uppercase tracking-wider">
+                                <div class="flex items-center space-x-3">
+                                    <span>SCENE: <strong class="text-accent font-bold">04</strong></span>
+                                    <span class="text-zinc-700">|</span>
+                                    <span>TAKE: <strong class="text-accent font-bold">02</strong></span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span>DIR: <strong class="text-white">ZAP FILMS</strong></span>
+                                    <span class="text-zinc-700">|</span>
+                                    <span>LENS: <strong class="text-zinc-400">35MM T1.5</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -972,8 +1050,13 @@
             const mins = String(now.getMinutes()).padStart(2, '0');
             const secs = String(now.getSeconds()).padStart(2, '0');
             const frames = String(Math.floor(now.getMilliseconds() / 16.6)).padStart(2, '0');
+            const tcString = `${hrs}:${mins}:${secs}:${frames}`;
+
             const tcElem = document.getElementById('timecode-display');
-            if (tcElem) tcElem.textContent = `${hrs}:${mins}:${secs}:${frames}`;
+            if (tcElem) tcElem.textContent = tcString;
+
+            const heroTcElem = document.getElementById('hero-timecode-display');
+            if (heroTcElem) heroTcElem.textContent = tcString;
         }
         setInterval(updateTimecode, 40);
 
