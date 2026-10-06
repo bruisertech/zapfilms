@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zap Films | Estudio de Producción & Management Independiente</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            950: '#070709',
+                            900: '#0B0C10',
+                            800: '#12141C',
+                            700: '#1C1F2C',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --accent: #D4E000;
+            --accent-glow: rgba(212, 224, 0, 0.4);
+            --accent-glow-strong: rgba(212, 224, 0, 0.7);
+            --accent-rgb: 212, 224, 0;
+        }
+
+        body {
+            background-color: #070709;
+            color: #E2E8F0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Dynamic Accent Bindings */
+        .text-accent {
+            color: var(--accent) !important;
+        }
+
+        .bg-accent {
+            background-color: var(--accent) !important;
+        }
+
+        .border-accent {
+            border-color: var(--accent) !important;
+        }
+
+        .shadow-neon {
+            box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
+        }
+
+        .shadow-neon-sm {
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .glow-border {
+            border-color: rgba(var(--accent-rgb), 0.3);
+            box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.15);
+        }
+
+        .glow-border:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 25px var(--accent-glow);
+        }
+
+        /* Dynamic Logo Styling using CSS Mask */
+        .zap-logo-mask {
+            display: inline-block;
+            width: 160px;
+            height: 48px;
+            background-color: var(--accent);
+            -webkit-mask: url('./blanco.png') no-repeat center / contain;
+            mask: url('./blanco.png') no-repeat center / contain;
+            transition: background-color 0.3s ease, filter 0.3s ease;
+            filter: drop-shadow(0 0 8px var(--accent-glow));
+        }
+
+        .zap-logo-mask-lg {
+            display: inline-block;
+            width: 240px;
+            height: 72px;
+            background-color: var(--accent);
+            -webkit-mask: url('./blanco.png') no-repeat center / contain;
+            mask: url('./blanco.png') no-repeat center / contain;
+            transition: background-color 0.3s ease, filter 0.3s ease;
+            filter: drop-shadow(0 0 12px var(--accent-glow));
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(18, 20, 28, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-panel-glow {
+            background: rgba(18, 20, 28, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(var(--accent-rgb), 0.3);
+            box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.15);
+        }
+
+        /* Frosted Glass Blur Overlay for Media Cards */
+        .blur-overlay {
+            backdrop-filter: blur(24px) grayscale(60%);
+            -webkit-backdrop-filter: blur(24px) grayscale(60%);
+            transition: opacity 0.5s ease, backdrop-filter 0.5s ease;
+        }
+
+        .media-card:hover .blur-overlay,
+        .media-card.unblurred .blur-overlay {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Pulse Badge Animation */
+        @keyframes pulse-glow {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.95);
+            }
+        }
+
+        .pulse-dot {
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070709;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1C1F2C;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+    </style>
+</head>
+<body class="bg-[#070709] text-gray-200 antialiased selection:bg-yellow-400 selection:text-black">
+
+    <!-- FLOATING THEME CUSTOMIZER DOCK -->
+    <div id="theme-dock" class="fixed bottom-6 right-6 z-50 glass-panel rounded-full p-2.5 shadow-2xl flex items-center gap-3 border border-white/10 transition-all duration-300 hover:scale-105">
+        <span class="text-xs font-semibold px-2 text-gray-400 flex items-center gap-1.5 hidden sm:flex">
+            <i data-lucide="palette" class="w-4 h-4 text-accent"></i>
+            Neón:
+        </span>
+        <div class="flex items-center gap-2">
+            <!-- Preset Colors -->
+            <button onclick="setTheme('#D4E000')" title="Electric Zap" class="theme-chip w-6 h-6 rounded-full bg-[#D4E000] border-2 border-white/20 transition-transform hover:scale-125 focus:outline-none ring-2 ring-transparent focus:ring-white"></button>
+            <button onclick="setTheme('#FF007F')" title="Cyber Magenta" class="theme-chip w-6 h-6 rounded-full bg-[#FF007F] border-2 border-white/20 transition-transform hover:scale-125 focus:outline-none ring-2 ring-transparent focus:ring-white"></button>
+            <button onclick="setTheme('#00F0FF')" title="Ice Cyan" class="theme-chip w-6 h-6 rounded-full bg-[#00F0FF] border-2 border-white/20 transition-transform hover:scale-125 focus:outline-none ring-2 ring-transparent focus:ring-white"></button>
+            <button onclick="setTheme('#9D00FF')" title="Royal Violet" class="theme-chip w-6 h-6 rounded-full bg-[#9D00FF] border-2 border-white/20 transition-transform hover:scale-125 focus:outline-none ring-2 ring-transparent focus:ring-white"></button>
+            <button onclick="setTheme('#FFFFFF')" title="Platinum Studio" class="theme-chip w-6 h-6 rounded-full bg-[#FFFFFF] border-2 border-white/20 transition-transform hover:scale-125 focus:outline-none ring-2 ring-transparent focus:ring-white"></button>
+
+            <!-- Custom Color Picker -->
+            <label class="relative cursor-pointer w-6 h-6 rounded-full overflow-hidden border-2 border-white/30 flex items-center justify-center bg-gradient-to-tr from-pink-500 via-purple-500 to-cyan-400 hover:scale-110 transition-transform">
+                <input type="color" id="customColorPicker" oninput="setTheme(this.value)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full">
+                <i data-lucide="plus" class="w-3.5 h-3.5 text-white stroke-[3]"></i>
+            </label>
+        </div>
+    </div>
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-white/10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="zap-logo-mask"></div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#modelo-zap" class="hover:text-accent transition-colors">Modelo Zap</a>
+                <a href="#producciones" class="hover:text-accent transition-colors">Producciones</a>
+                <a href="#servicios" class="hover:text-accent transition-colors">Servicios</a>
+                <a href="#bruiser-care" class="hover:text-accent transition-colors flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Bruiser Care
+                </a>
+            </nav>
+
+            <!-- Quick Actions -->
+            <div class="flex items-center gap-3">
+                <a href="#bruiser-care" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 border border-white/10 text-gray-300 hover:border-accent hover:text-accent transition-all">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-accent"></i>
+                    Ver Propuesta Bruiser Care
+                </a>
+                <button onclick="openCastingModal()" class="px-5 py-2.5 rounded-xl font-heading font-bold text-xs uppercase tracking-wider bg-accent text-black hover:opacity-90 transition-all transform hover:-translate-y-0.5 shadow-neon">
+                    Postularme como Talento
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden">
+        <!-- Ambient Glow Backgrounds -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[140px] pointer-events-none opacity-20 bg-accent transition-all duration-700"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+
+            <!-- Pulsing Badge -->
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-panel border border-white/10 text-xs font-semibold tracking-wider uppercase mb-8">
+                <span class="w-2.5 h-2.5 rounded-full bg-accent pulse-dot"></span>
+                <span class="text-gray-300">Estudio de Producción & Management Independiente</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.1] mb-6 max-w-5xl mx-auto">
+                Deja de vender tus videos por un pago único. <br class="hidden sm:inline">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-accent">Construye una carrera con regalías de por vida.</span>
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto mb-10 font-normal leading-relaxed">
+                En <strong class="text-white font-semibold">Zap Films</strong> transformamos actores y creadores en marcas rentables. Ponemos la dirección cinematográfica, producción 4K y gestión de plataformas; tú mantienes la propiedad total de tu contenido y cuentas con acceso 24/7 a tus ingresos.
+            </p>
+
+            <!-- Hero CTAs -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <button onclick="openCastingModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl font-heading font-extrabold text-sm uppercase tracking-wider bg-accent text-black hover:scale-105 transition-all shadow-neon flex items-center justify-center gap-3">
+                    <i data-lucide="clapperboard" class="w-5 h-5"></i>
+                    Aplicar al Casting / Postulación
+                </button>
+                <a href="#modelo-zap" class="w-full sm:w-auto px-8 py-4 rounded-xl font-heading font-bold text-sm uppercase tracking-wider glass-panel text-white hover:border-accent hover:text-accent transition-all flex items-center justify-center gap-2">
+                    Diferencia vs. Estudios Tradicionales
+                    <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Social Proof / Metrics Strip -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto pt-8 border-t border-white/10">
+                <div class="glass-panel p-4 rounded-2xl text-center">
+                    <div class="text-2xl font-bold font-heading text-accent mb-1">100%</div>
+                    <div class="text-xs text-gray-400">Propiedad del Creador</div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl text-center">
+                    <div class="text-2xl font-bold font-heading text-accent mb-1">Semanales</div>
+                    <div class="text-xs text-gray-400">Pagos Transparentes</div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl text-center">
+                    <div class="text-2xl font-bold font-heading text-accent mb-1">4K HDR</div>
+                    <div class="text-xs text-gray-400">Calidad Cinematográfica</div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl text-center">
+                    <div class="text-2xl font-bold font-heading text-accent mb-1">Cero</div>
+                    <div class="text-xs text-gray-400">Contratos de Secuestro</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION C: COMPARISON - MODELO ZAP VS ESTUDIOS TRADICIONALES -->
+    <section id="modelo-zap" class="py-24 relative bg-dark-900/50 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase font-bold tracking-widest text-accent mb-3">La Revolución en el Contenido Adulto</h2>
+                <h3 class="text-3xl sm:text-5xl font-extrabold text-white">Estudios Tradicionales vs. Zap Films</h3>
+                <p class="text-gray-400 mt-4 text-base">Compara el modelo obsoleto de explotación única frente al modelo de agencia y gestión independiente moderna.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <!-- Columna 1: Productoras Tradicionales -->
+                <div class="glass-panel p-8 rounded-3xl border border-red-500/20 bg-red-950/10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400">
+                                <i data-lucide="x-circle" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white">Productoras Tradicionales</h4>
+                                <p class="text-xs text-red-400 font-medium">Sexmex, Inka Sex & Modelos de Cesión</p>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-4 text-sm text-gray-300 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="alert-triangle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+                                <span><strong>Pago único:</strong> Recibes entre $500 y $1,000 USD por rodaje y jamás vuelves a ver un centavo.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="alert-triangle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+                                <span><strong>Pérdida de Derechos:</strong> Cedes tu imagen y videos de por vida a la productora.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="alert-triangle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+                                <span><strong>Cero Transparencia:</strong> Desconoces cuánto recauda tu producción en plataformas internacionales.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="alert-triangle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+                                <span><strong>Dependencia Total:</strong> Si la productora no te llama, tu ingreso vuelve a cero.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-xs text-red-300 text-center font-medium">
+                        Resultado: Creas riqueza para otros mientras tu marca personal se estanca.
+                    </div>
+                </div>
+
+                <!-- Columna 2: Modelo Zap Films (Destacada) -->
+                <div class="glass-panel-glow p-8 rounded-3xl relative flex flex-col justify-between">
+                    <div class="absolute -top-3.5 right-6 px-4 py-1 rounded-full bg-accent text-black font-heading font-extrabold text-xs tracking-wider uppercase shadow-neon">
+                        Modelo Recomendado
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center text-accent">
+                                <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white">Modelo Zap Films Management</h4>
+                                <p class="text-xs text-accent font-medium">Gestión 360° & Regalías Perpetuas</p>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-4 text-sm text-gray-200 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+                                <span><strong>Regalías Recurrentes:</strong> Tus videos siguen generando ingresos semanales mes tras mes.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+                                <span><strong>100% Propiedad Tuya:</strong> Tu marca, tus perfiles y tu catálogo audiovisual pertenecen totalmente a ti.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+                                <span><strong>Transparencia Absoluta:</strong> Acceso a métricas de recaudo y paneles de cobro directo.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+                                <span><strong>Producción de Elite:</strong> Guionistas, directores de cine, locaciones de lujo y edición de alto impacto.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button onclick="openCastingModal()" class="w-full py-3.5 rounded-xl font-heading font-extrabold text-xs uppercase tracking-wider bg-accent text-black hover:opacity-90 transition-all text-center shadow-neon">
+                        Unirme al Modelo Zap Films
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION D: ÚLTIMAS PRODUCCIONES (STRIPCHAT-INSPIRED MEDIA GRID) -->
+    <section id="producciones" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <h2 class="text-xs uppercase font-bold tracking-widest text-accent mb-3">Catálogo Cinematográfico</h2>
+                    <h3 class="text-3xl sm:text-5xl font-extrabold text-white">Últimas Producciones</h3>
+                </div>
+                <p class="text-gray-400 text-sm max-w-md">
+                    Avances con calidad cinematográfica 4K HDR. Haz hover sobre cada portada para previsualizar.
+                </p>
+            </div>
+
+            <!-- Media Grid (6 cards with blur overlay) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Card 1 -->
+                <div class="media-card glass-panel rounded-2xl overflow-hidden group cursor-pointer border border-white/10 hover:border-accent transition-all duration-300 relative" onclick="toggleCardBlur(this)">
+                    <div class="relative h-72 w-full overflow-hidden bg-dark-800">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Velvet Neon Session" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+
+                        <!-- Frosted Blur Overlay -->
+                        <div class="blur-overlay absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black/40">
+                            <i data-lucide="eye-off" class="w-8 h-8 text-accent mb-2"></i>
+                            <span class="text-xs font-bold text-white tracking-widest uppercase mb-1">Contenido Editorial 18+</span>
+                            <span class="text-[10px] text-gray-300 bg-white/10 px-3 py-1 rounded-full border border-white/20">Hover para desbloquear preview</span>
+                        </div>
+
+                        <!-- Top Badges -->
+                        <div class="absolute top-3 left-3 flex gap-2 z-10">
+                            <span class="px-2.5 py-1 rounded-md bg-accent text-black font-heading font-extrabold text-[10px] tracking-wider uppercase">4K HDR</span>
+                            <span class="px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-white font-heading font-semibold text-[10px] tracking-wider uppercase border border-white/20">TOP VENTAS</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="text-lg font-bold text-white group-hover:text-accent transition-colors">Production #042 - Velvet Neon</h4>
+                        <div class="flex items-center justify-between text-xs text-gray-400 mt-2">
+                            <span>Director: Zap Studio</span>
+                            <span>18:42 min</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-gray-400 mt-2 pt-2 border-t border-white/5">
+                            <span class="text-accent font-semibold flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i> 99.8% Valoración</span>
+                            <span class="text-gray-500">Publicado esta semana</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="media-card glass-panel rounded-2xl overflow-hidden group cursor-pointer border border-white/10 hover:border-accent transition-all duration-300 relative" onclick="toggleCardBlur(this)">
+                    <div class="relative h-72 w-full overflow-hidden bg-dark-800">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Studio Session Cali" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+
+                        <!-- Frosted Blur Overlay -->
+                        <div class="blur-overlay absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black/40">
+                            <i data-lucide="eye-off" class="w-8 h-8 text-accent mb-2"></i>
+                            <span class="text-xs font-bold text-white tracking-widest uppercase mb-1">Contenido Editorial 18+</span>
+                            <span class="text-[10px] text-gray-300 bg-white/10 px-3 py-1 rounded-full border border-white/20">Hover para desbloquear preview</span>
+                        </div>
+
+                        <div class="absolute top-3 left-3 flex gap-2 z-10">
+                            <span class="px-2.5 py-1 rounded-md bg-accent text-black font-heading font-extrabold text-[10px] tracking-wider uppercase">ESTRENO</span>
+                            <span class="px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-white font-heading font-semibold text-[10px] tracking-wider uppercase border border-white/20">EXCLUSIVO</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="text-lg font-bold text-white group-hover:text-accent transition-colors">Studio Session - Cali Luxury Penthouse</h4>
+                        <div class="flex items-center justify-between text-xs text-gray-400 mt-2">
+                            <span>Director: Zap Studio</span>
+                            <span>24:15 min</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-gray-400 mt-2 pt-2 border-t border-white/5">
+                            <span class="text-accent font-semibold flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i> 99.4% Valoración</span>
+                            <span class="text-gray-500">Reciente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="media-card glass-panel rounded-2xl overflow-hidden group cursor-pointer border border-white/10 hover:border-accent transition-all duration-300 relative" onclick="toggleCardBlur(this)">
+                    <div class="relative h-72 w-full overflow-hidden bg-dark-800">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80" alt="Cyber Sunset Series" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+
+                        <!-- Frosted Blur Overlay -->
+                        <div class="blur-overlay absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black/40">
+                            <i data-lucide="eye-off" class="w-8 h-8 text-accent mb-2"></i>
+                            <span class="text-xs font-bold text-white tracking-widest uppercase mb-1">Contenido Editorial 18+</span>
+                            <span class="text-[10px] text-gray-300 bg-white/10 px-3 py-1 rounded-full border border-white/20">Hover para desbloquear preview</span>
+                        </div>
+
+                        <div class="absolute top-3 left-3 flex gap-2 z-10">
+                            <span class="px-2.5 py-1 rounded-md bg-accent text-black font-heading font-extrabold text-[10px] tracking-wider uppercase">4K MASTER</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="text-lg font-bold text-white group-hover:text-accent transition-colors">Production #038 - Cyber Sunset</h4>
+                        <div class="flex items-center justify-between text-xs text-gray-400 mt-2">
+                            <span>Director: Zap Studio</span>
+                            <span>21:08 min</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-gray-400 mt-2 pt-2 border-t border-white/5">
+                            <span class="text-accent font-semibold flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i> 98.9% Valoración</span>
+                            <span class="text-gray-500">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="media-card glass-panel rounded-2xl overflow-hidden group cursor-pointer border border-white/10 hover:border-accent transition-all duration-300 relative" onclick="toggleCardBlur(this)">
+                    <div class="relative h-72 w-full overflow-hidden bg-dark-800">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80" alt="Midnight Silk" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+
+                        <!-- Frosted Blur Overlay -->
+                        <div class="blur-overlay absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black/40">
+                            <i data-lucide="eye-off" class="w-8 h-8 text-accent mb-2"></i>
+                            <span class="text-xs font-bold text-white tracking-widest uppercase mb-1">Contenido Editorial 18+</span>
+                            <span class="text-[10px] text-gray-300 bg-white/10 px-3 py-1 rounded-full border border-white/20">Hover para desbloquear preview</span>
+                        </div>
+
+                        <div class="absolute top-3 left-3 flex gap-2 z-10">
+                            <span class="px-2.5 py-1 rounded-md bg-accent text-black font-heading font-extrabold text-[10px] tracking-wider uppercase">4K HDR</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="text-lg font-bold text-white group-hover:text-accent transition-colors">Production #035 - Midnight Silk</h4>
+                        <div class="flex items-center justify-between text-xs text-gray-400 mt-2">
+                            <span>Director: Zap Studio</span>
+                            <span>19:50 min</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-gray-400 mt-2 pt-2 border-t border-white/5">
+                            <span class="text-accent font-semibold flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i> 99.1% Valoración</span>
+                            <span class="text-gray-500">Destacado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="media-card glass-panel rounded-2xl overflow-hidden group cursor-pointer border border-white/10 hover:border-accent transition-all duration-300 relative" onclick="toggleCardBlur(this)">
+                    <div class="relative h-72 w-full overflow-hidden bg-dark-800">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80" alt="Golden Hour Duet" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+
+                        <!-- Frosted Blur Overlay -->
+                        <div class="blur-overlay absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black/40">
+                            <i data-lucide="eye-off" class="w-8 h-8 text-accent mb-2"></i>
+                            <span class="text-xs font-bold text-white tracking-widest uppercase mb-1">Contenido Editorial 18+</span>
+                            <span class="text-[10px] text-gray-300 bg-white/10 px-3 py-1 rounded-full border border-white/20">Hover para desbloquear preview</span>
+                        </div>
+
+                        <div class="absolute top-3 left-3 flex gap-2 z-10">
+                            <span class="px-2.5 py-1 rounded-md bg-accent text-black font-heading font-extrabold text-[10px] tracking-wider uppercase">TOP VENTAS</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="text-lg font-bold text-white group-hover:text-accent transition-colors">Production #031 - Golden Hour Duet</h4>
+                        <div class="flex items-center justify-between text-xs text-gray-400 mt-2">
+                            <span>Director: Zap Studio</span>
+                            <span>27:30 min</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-gray-400 mt-2 pt-2 border-t border-white/5">
+                            <span class="text-accent font-semibold flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i> 100% Valoración</span>
+                            <span class="text-gray-500">Tendencia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="media-card glass-panel rounded-2xl overflow-hidden group cursor-pointer border border-white/10 hover:border-accent transition-all duration-300 relative" onclick="toggleCardBlur(this)">
+                    <div class="relative h-72 w-full overflow-hidden bg-dark-800">
+                        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80" alt="Obsidian Cinema" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+
+                        <!-- Frosted Blur Overlay -->
+                        <div class="blur-overlay absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black/40">
+                            <i data-lucide="eye-off" class="w-8 h-8 text-accent mb-2"></i>
+                            <span class="text-xs font-bold text-white tracking-widest uppercase mb-1">Contenido Editorial 18+</span>
+                            <span class="text-[10px] text-gray-300 bg-white/10 px-3 py-1 rounded-full border border-white/20">Hover para desbloquear preview</span>
+                        </div>
+
+                        <div class="absolute top-3 left-3 flex gap-2 z-10">
+                            <span class="px-2.5 py-1 rounded-md bg-accent text-black font-heading font-extrabold text-[10px] tracking-wider uppercase">4K HDR</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="text-lg font-bold text-white group-hover:text-accent transition-colors">Production #029 - Obsidian Noir</h4>
+                        <div class="flex items-center justify-between text-xs text-gray-400 mt-2">
+                            <span>Director: Zap Studio</span>
+                            <span>22:40 min</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-gray-400 mt-2 pt-2 border-t border-white/5">
+                            <span class="text-accent font-semibold flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i> 99.6% Valoración</span>
+                            <span class="text-gray-500">Clásico</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION E: PILARES DE SERVICIO -->
+    <section id="servicios" class="py-24 bg-dark-900/40 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase font-bold tracking-widest text-accent mb-3">Infraestructura & Soporte</h2>
+                <h3 class="text-3xl sm:text-5xl font-extrabold text-white">Pilares de Servicio Zap Films</h3>
+                <p class="text-gray-400 mt-4 text-base">Nos encargamos de toda la complejidad técnica y operativa para que tú te concentres en crear.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div class="glass-panel p-6 rounded-2xl hover:border-accent transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="video" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-3">1. Producción Cinematográfica</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Rodajes con cámaras RED/Sony FX de cine, iluminación profesional, locaciones exclusivas de lujo y dirección escénica experta.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl hover:border-accent transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="film" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-3">2. Edición de Alta Retención</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Montaje profesional optimizado para ventas PPV, teasers virales para X/Twitter e Instagram, y tráilers de conversión masiva.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl hover:border-accent transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="share-2" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-3">3. Management & Distribución</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Gestión completa de publicaciones, estratega de precios en OnlyFans, Fansly y plataformas premium de suscripción.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl hover:border-accent transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="wallet" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-3">4. Logística Financiera</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Manejo ultra-seguro de procesadores internacionales, liquidaciones semanales en cripto o cuenta bancaria y contabilidad transparente.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION F: PROPUESTA COMERCIAL BRUISER CARE (BY BRUISER TECH) -->
+    <section id="bruiser-care" class="py-24 relative overflow-hidden bg-gradient-to-b from-[#070709] via-dark-900 to-[#070709]">
+        <!-- Background Ambient Grid -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+                    <i data-lucide="code-2" class="w-3.5 h-3.5"></i>
+                    Ingeniería Web & Mantenimiento Continuo
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Propuesta Comercial Bruiser Care</h2>
+                <p class="text-gray-400 mt-4 text-base">
+                    Desarrollado y operado por <strong class="text-white">Bruiser Tech</strong> (Cali, Colombia). Garantizamos máxima velocidad, disponibilidad total y actualización continua para Zap Films.
+                </p>
+            </div>
+
+            <!-- Dual Plan Grid -->
+            <div class="grid md:grid-cols-2 gap-8 items-stretch max-w-5xl mx-auto">
+
+                <!-- Plan 1: Suscripción Mensual Bruiser Care (Recomendado) -->
+                <div class="glass-panel-glow p-8 rounded-3xl relative flex flex-col justify-between border-2 border-accent/40">
+                    <div class="absolute -top-3.5 right-6 px-4 py-1 rounded-full bg-accent text-black font-heading font-extrabold text-xs tracking-wider uppercase shadow-neon">
+                        Plan Recomendado
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent font-bold">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Suscripción Bruiser Care</h3>
+                                <p class="text-xs text-accent font-medium">Soporte, Hosting & Evolución Continua</p>
+                            </div>
+                        </div>
+
+                        <div class="my-6 p-4 rounded-2xl bg-accent/10 border border-accent/20">
+                            <div class="text-3xl font-black font-heading text-white">$45.900 <span class="text-sm font-normal text-gray-300">COP / mes</span></div>
+                            <p class="text-xs text-accent mt-1 font-medium">Flexibilidad total sin amarres.</p>
+                        </div>
+
+                        <ul class="space-y-3.5 text-sm text-gray-200 mb-8">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i>
+                                <span>Despliegue en CDN global ultra-rápida (GitHub Pages/Edge)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i>
+                                <span>Soporte técnico ilimitado ante incidencias</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i>
+                                <span>Cambios continuos (actualización de modelos, textos, banners y casting)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i>
+                                <span>Tarifas preferenciales en desarrollo de nuevas funciones</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i>
+                                <span>Monitoreo 24/7 de Uptime y Certificados SSL</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/573053862774?text=Hola%20Bruiser%20Tech,%20deseo%20contratar%20el%20plan%20Suscripción%20Bruiser%20Care%20para%20Zap%20Films" target="_blank" class="w-full py-4 rounded-xl font-heading font-extrabold text-xs uppercase tracking-wider bg-accent text-black hover:opacity-90 transition-all text-center shadow-neon flex items-center justify-center gap-2">
+                        <i data-lucide="message-square" class="w-4 h-4"></i>
+                        Contratar con Bruiser Care
+                    </a>
+                </div>
+
+                <!-- Plan 2: Desarrollo Único -->
+                <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between border border-white/10 hover:border-white/20 transition-all">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white font-bold">
+                                <i data-lucide="code" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Desarrollo Único</h3>
+                                <p class="text-xs text-gray-400 font-medium">Pago Pago de Entrega + Gastos Directos</p>
+                            </div>
+                        </div>
+
+                        <div class="my-6 p-4 rounded-2xl bg-white/5 border border-white/10">
+                            <div class="text-3xl font-black font-heading text-white">$750.000 <span class="text-sm font-normal text-gray-400">COP (Único)</span></div>
+                            <div class="text-xs text-gray-400 mt-1 font-medium">+ $148.450 COP / año (Hosting & Dominio directo)</div>
+                        </div>
+
+                        <ul class="space-y-3.5 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                                <span>Entrega final de código fuente estático optimizado</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="x" class="w-4 h-4 text-red-400 shrink-0"></i>
+                                <span class="text-gray-400">No incluye soporte técnico ni mantenimiento posterior</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="x" class="w-4 h-4 text-red-400 shrink-0"></i>
+                                <span class="text-gray-400">Los cambios de contenido se cotizan por hora independiente</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                                <span>Configuración inicial de hosting y DNS</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/573053862774?text=Hola%20Bruiser%20Tech,%20deseo%20elegir%20la%20opción%20de%20Desarrollo%20Único%20para%20Zap%20Films" target="_blank" class="w-full py-4 rounded-xl font-heading font-bold text-xs uppercase tracking-wider glass-panel text-white hover:border-white hover:bg-white/10 transition-all text-center flex items-center justify-center gap-2">
+                        <i data-lucide="message-square" class="w-4 h-4"></i>
+                        Elegir Desarrollo Único
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Authorship Note -->
+            <div class="mt-12 text-center text-xs text-gray-400 max-w-xl mx-auto flex items-center justify-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4 text-accent"></i>
+                <span>Compiled in Cali, CO by <strong>Bruiser Tech</strong>. Consultoría Digital & Arquitectura B2B.</span>
+                <a href="https://bruiser.tech" target="_blank" class="text-accent underline hover:opacity-80">bruiser.tech</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark-950 border-t border-white/10 py-12 text-gray-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/5">
+                <div class="flex items-center gap-3">
+                    <div class="zap-logo-mask" style="width: 140px; height: 42px;"></div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="#modelo-zap" class="hover:text-accent transition-colors">Modelo Zap</a>
+                    <a href="#producciones" class="hover:text-accent transition-colors">Producciones</a>
+                    <a href="#servicios" class="hover:text-accent transition-colors">Servicios</a>
+                    <a href="#bruiser-care" class="hover:text-accent transition-colors">Bruiser Care</a>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+                <p class="text-gray-500 max-w-2xl leading-relaxed">
+                    <strong class="text-gray-400">Aviso Legal 18+:</strong> Sitio exclusivo para personas mayores de edad (+18 años). Todo el contenido audiovisual cuenta con registros de consentimiento explícito según normativas internacionales. Zap Films promueve el empoderamiento e independencia de creadores de contenido.
+                </p>
+                <div class="text-gray-500">
+                    © <span id="currentYear"></span> Zap Films. Desarrollado por <a href="https://bruiser.tech" target="_blank" class="text-accent hover:underline">Bruiser Tech</a>.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE CASTING & RECRUITMENT MODAL (MULTI-STEP DEMO) -->
+    <div id="castingModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-panel w-full max-w-xl rounded-3xl p-6 sm:p-8 border border-white/20 relative shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300" id="modalContainer">
+
+            <!-- Close Button -->
+            <button onclick="closeCastingModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-white/20 transition-all">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="mb-6">
+                <div class="flex items-center gap-2 text-accent text-xs font-bold font-heading uppercase tracking-widest mb-1">
+                    <i data-lucide="clapperboard" class="w-4 h-4"></i>
+                    Casting & Management Zap Films
+                </div>
+                <h3 class="text-2xl font-extrabold text-white">Postulación para Talento</h3>
+            </div>
+
+            <!-- Step Indicators -->
+            <div class="flex items-center gap-2 mb-8" id="stepIndicators">
+                <div class="step-dot flex-1 h-1.5 rounded-full bg-accent transition-all duration-300" id="dotStep1"></div>
+                <div class="step-dot flex-1 h-1.5 rounded-full bg-white/20 transition-all duration-300" id="dotStep2"></div>
+                <div class="step-dot flex-1 h-1.5 rounded-full bg-white/20 transition-all duration-300" id="dotStep3"></div>
+            </div>
+
+            <!-- FORM BODY -->
+            <form id="castingForm" onsubmit="event.preventDefault();" class="space-y-5">
+
+                <!-- STEP 1: Datos Personales & Verificación -->
+                <div id="step1" class="step-content space-y-4">
+                    <h4 class="text-sm font-bold text-gray-300 uppercase tracking-wider">Paso 1 de 3: Datos Personales</h4>
+
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">Nombre / Alias Artístico *</label>
+                        <input type="text" id="inputAlias" required placeholder="Ej. Valery Neon" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors text-sm">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-1">Edad *</label>
+                            <input type="number" id="inputEdad" required min="18" placeholder="18+" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-1">Ciudad y País *</label>
+                            <input type="text" id="inputCiudad" required placeholder="Ej. Cali, Colombia" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">WhatsApp / Teléfono *</label>
+                        <input type="tel" id="inputPhone" required placeholder="+57 300 000 0000" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors text-sm">
+                    </div>
+
+                    <div class="flex items-start gap-3 pt-2">
+                        <input type="checkbox" id="checkAge" required class="mt-1 rounded bg-white/10 border-white/20 text-accent focus:ring-accent">
+                        <label for="checkAge" class="text-xs text-gray-400 leading-tight">
+                            Declaro explícitamente que soy mayor de 18 años y acepto ser contactado por la dirección de Zap Films.
+                        </label>
+                    </div>
+
+                    <div class="pt-4 flex justify-end">
+                        <button type="button" onclick="goToStep(2)" class="px-6 py-3 rounded-xl bg-accent text-black font-heading font-extrabold text-xs uppercase tracking-wider hover:opacity-90 transition-all shadow-neon flex items-center gap-2">
+                            Siguiente Paso
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Experiencia & Redes -->
+                <div id="step2" class="step-content space-y-4 hidden">
+                    <h4 class="text-sm font-bold text-gray-300 uppercase tracking-wider">Paso 2 de 3: Experiencia & Categoría</h4>
+
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">Redes Sociales o Perfiles (Instagram, X, OF, Fansly)</label>
+                        <input type="text" id="inputRedes" placeholder="@usuario o link de perfil (o 'Sin experiencia previa')" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">Categoría / Modalidad de Interés *</label>
+                        <select id="inputCategoria" class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-white/10 text-white focus:outline-none focus:border-accent transition-colors text-sm">
+                            <option value="Solista / Creador(a) de Contenido">Solista / Creador(a) de Contenido</option>
+                            <option value="Colaboraciones & Duetos">Colaboraciones & Duetos</option>
+                            <option value="Actuación con Guión Cinematográfico">Actuación con Guión Cinematográfico</option>
+                            <option value="Modelaje Editorial / BDSM Fetiche">Modelaje Editorial / Fetiche</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">Comentarios o Expectativas</label>
+                        <textarea id="inputComentarios" rows="3" placeholder="Cuéntanos brevemente sobre tus metas con Zap Films..." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors text-sm"></textarea>
+                    </div>
+
+                    <div class="pt-4 flex items-center justify-between">
+                        <button type="button" onclick="goToStep(1)" class="px-5 py-3 rounded-xl bg-white/10 text-gray-300 font-heading font-bold text-xs uppercase tracking-wider hover:bg-white/20 transition-all">
+                            Atrás
+                        </button>
+                        <button type="button" onclick="goToStep(3)" class="px-6 py-3 rounded-xl bg-accent text-black font-heading font-extrabold text-xs uppercase tracking-wider hover:opacity-90 transition-all shadow-neon flex items-center gap-2">
+                            Siguiente Paso
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Casting Book / Fotos (Simulado) -->
+                <div id="step3" class="step-content space-y-4 hidden">
+                    <h4 class="text-sm font-bold text-gray-300 uppercase tracking-wider">Paso 3 de 3: Material de Referencia</h4>
+
+                    <p class="text-xs text-gray-400">
+                        Sube 2 o 3 fotografías de referencia (Rostro y Cuerpo entero). Las fotos se procesan únicamente en tu navegador para vista previa.
+                    </p>
+
+                    <!-- Drag & Drop Zone -->
+                    <div class="border-2 border-dashed border-white/20 rounded-2xl p-6 text-center hover:border-accent transition-colors cursor-pointer relative bg-white/5" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                        <input type="file" id="fileInput" multiple accept="image/*" class="hidden" onchange="handleFileSelect(event)">
+                        <i data-lucide="upload-cloud" class="w-10 h-10 text-accent mx-auto mb-2"></i>
+                        <p class="text-xs font-semibold text-white">Haz clic o arrastra fotos aquí</p>
+                        <p class="text-[10px] text-gray-400 mt-1">PNG, JPG hasta 10MB</p>
+                    </div>
+
+                    <!-- Photo Previews Container -->
+                    <div id="photoPreviews" class="grid grid-cols-3 gap-3 hidden"></div>
+
+                    <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center gap-2 text-[11px] text-gray-400">
+                        <i data-lucide="lock" class="w-4 h-4 text-accent shrink-0"></i>
+                        <span><strong>Sello NDA:</strong> Tus datos y material están protegidos por estrictos acuerdos de confidencialidad.</span>
+                    </div>
+
+                    <div class="pt-4 flex items-center justify-between">
+                        <button type="button" onclick="goToStep(2)" class="px-5 py-3 rounded-xl bg-white/10 text-gray-300 font-heading font-bold text-xs uppercase tracking-wider hover:bg-white/20 transition-all">
+                            Atrás
+                        </button>
+                        <button type="button" onclick="submitCasting()" class="px-6 py-3 rounded-xl bg-accent text-black font-heading font-extrabold text-xs uppercase tracking-wider hover:opacity-90 transition-all shadow-neon flex items-center gap-2">
+                            Enviar Postulación
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SUCCESS STEP -->
+                <div id="stepSuccess" class="step-content space-y-6 hidden text-center py-4">
+                    <div class="w-16 h-16 bg-accent/20 border-2 border-accent text-accent rounded-full flex items-center justify-center mx-auto shadow-neon">
+                        <i data-lucide="check-circle" class="w-10 h-10"></i>
+                    </div>
+
+                    <div>
+                        <h4 class="text-2xl font-extrabold text-white">¡Postulación Preparada!</h4>
+                        <p class="text-sm text-gray-300 mt-2">
+                            Haz clic en el botón a continuación para enviar directamente tus datos prellenados al equipo de Casting de Zap Films por WhatsApp.
+                        </p>
+                    </div>
+
+                    <a id="whatsappSubmitBtn" href="#" target="_blank" class="w-full py-4 rounded-xl font-heading font-extrabold text-xs uppercase tracking-wider bg-emerald-500 text-black hover:bg-emerald-400 transition-all shadow-lg flex items-center justify-center gap-3">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        Enviar por WhatsApp a Zap Films
+                    </a>
+
+                    <button type="button" onclick="closeCastingModal()" class="text-xs text-gray-400 hover:text-white underline">
+                        Cerrar ventana
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- VANILLA JAVASCRIPT LOGIC -->
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Dynamic Theme Customizer Logic
+        function setTheme(colorHex) {
+            document.documentElement.style.setProperty('--accent', colorHex);
+
+            // Calculate RGBA for glow effects
+            const rgb = hexToRgb(colorHex);
+            if (rgb) {
+                document.documentElement.style.setProperty('--accent-rgb', `${rgb.r}, ${rgb.g}, ${rgb.b}`);
+                document.documentElement.style.setProperty('--accent-glow', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.4)`);
+                document.documentElement.style.setProperty('--accent-glow-strong', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.7)`);
+            }
+        }
+
+        function hexToRgb(hex) {
+            hex = hex.replace('#', '');
+            if (hex.length === 3) {
+                hex = hex.split('').map(char => char + char).join('');
+            }
+            if (hex.length !== 6) return null;
+            const num = parseInt(hex, 16);
+            return {
+                r: (num >> 16) & 255,
+                g: (num >> 8) & 255,
+                b: num & 255
+            };
+        }
+
+        // Card Blur Toggle Logic (For mobile/touch support)
+        function toggleCardBlur(cardElement) {
+            cardElement.classList.toggle('unblurred');
+        }
+
+        // Multi-Step Casting Modal Logic
+        let currentStep = 1;
+
+        function openCastingModal() {
+            const modal = document.getElementById('castingModal');
+            const container = document.getElementById('modalContainer');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            container.classList.remove('scale-95');
+            container.classList.add('scale-100');
+            goToStep(1);
+        }
+
+        function closeCastingModal() {
+            const modal = document.getElementById('castingModal');
+            const container = document.getElementById('modalContainer');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+        }
+
+        // Close modal on Escape key press
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeCastingModal();
+        });
+
+        // Close modal on backdrop click
+        document.getElementById('castingModal').addEventListener('click', function(e) {
+            if (e.target === this) closeCastingModal();
+        });
+
+        function goToStep(step) {
+            // Basic validation when advancing from Step 1
+            if (currentStep === 1 && step === 2) {
+                const alias = document.getElementById('inputAlias').value.trim();
+                const edad = document.getElementById('inputEdad').value;
+                const ciudad = document.getElementById('inputCiudad').value.trim();
+                const phone = document.getElementById('inputPhone').value.trim();
+                const checkAge = document.getElementById('checkAge').checked;
+
+                if (!alias || !edad || !ciudad || !phone) {
+                    alert('Por favor completa todos los campos obligatorios del Paso 1.');
+                    return;
+                }
+                if (!checkAge) {
+                    alert('Debes declarar que eres mayor de 18 años para continuar.');
+                    return;
+                }
+            }
+
+            currentStep = step;
+
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden'));
+
+            // Update step indicators
+            const dot1 = document.getElementById('dotStep1');
+            const dot2 = document.getElementById('dotStep2');
+            const dot3 = document.getElementById('dotStep3');
+
+            dot1.style.backgroundColor = step >= 1 ? 'var(--accent)' : 'rgba(255, 255, 255, 0.2)';
+            dot2.style.backgroundColor = step >= 2 ? 'var(--accent)' : 'rgba(255, 255, 255, 0.2)';
+            dot3.style.backgroundColor = step >= 3 ? 'var(--accent)' : 'rgba(255, 255, 255, 0.2)';
+
+            if (step === 1) document.getElementById('step1').classList.remove('hidden');
+            if (step === 2) document.getElementById('step2').classList.remove('hidden');
+            if (step === 3) document.getElementById('step3').classList.remove('hidden');
+            if (step === 4) {
+                document.getElementById('stepSuccess').classList.remove('hidden');
+                document.getElementById('stepIndicators').classList.add('hidden');
+            } else {
+                document.getElementById('stepIndicators').classList.remove('hidden');
+            }
+        }
+
+        // Image Drop & Upload Simulation
+        function handleFileSelect(event) {
+            const files = event.target.files;
+            const previewContainer = document.getElementById('photoPreviews');
+            previewContainer.innerHTML = '';
+
+            if (files && files.length > 0) {
+                previewContainer.classList.remove('hidden');
+                Array.from(files).slice(0, 3).forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'w-full h-24 object-cover rounded-xl border border-white/20';
+                        previewContainer.appendChild(img);
+                    }
+                    reader.readAsDataURL(file);
+                });
+            }
+        }
+
+        // Form Submission to WhatsApp
+        function submitCasting() {
+            const alias = document.getElementById('inputAlias').value.trim();
+            const edad = document.getElementById('inputEdad').value;
+            const ciudad = document.getElementById('inputCiudad').value.trim();
+            const phone = document.getElementById('inputPhone').value.trim();
+            const redes = document.getElementById('inputRedes').value.trim() || 'No especificado';
+            const categoria = document.getElementById('inputCategoria').value;
+            const comentarios = document.getElementById('inputComentarios').value.trim() || 'Sin comentarios adicionales';
+
+            const message = `Hola Zap Films, acabo de completar mi postulación en la web:\n\n` +
+                `👤 *Alias/Nombre:* ${alias}\n` +
+                `🎂 *Edad:* ${edad} años\n` +
+                `📍 *Ciudad/País:* ${ciudad}\n` +
+                `📱 *WhatsApp:* ${phone}\n` +
+                `🔗 *Redes:* ${redes}\n` +
+                `🎬 *Categoría:* ${categoria}\n` +
+                `💬 *Comentarios:* ${comentarios}`;
+
+            const encodedMsg = encodeURIComponent(message);
+            const waUrl = `https://wa.me/573053862774?text=${encodedMsg}`;
+
+            document.getElementById('whatsappSubmitBtn').href = waUrl;
+            goToStep(4);
+        }
+    </script>
+</body>
+</html>
